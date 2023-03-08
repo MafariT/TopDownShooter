@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var ACCELERATION : int  = 2000
 @export var MAX_SPEED : int = 350
-@export var  FRICTION : int = 750
+@export var  FRICTION : int = 500
 @export var BULLET_SPEED : int = 750
 
 @onready var fire_delay = $FireDelay
