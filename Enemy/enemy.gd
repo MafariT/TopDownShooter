@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var acceleration : int = 1000
-@export var max_speed : int = 300
-@export var friction : int = 1
+@export var ACCELERATION : int = 1000
+@export var MAX_SPEED : int = 300
+@export var FRICTION : int = 1
 @export var BULLET_SPEED: int = 500
 
 @onready var player_detection_zone = $PlayerDetectionZone
@@ -24,11 +24,11 @@ func _physics_process(delta):
 			fire()
 
 func move(delta):
-	velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
 func accelerate_toward_point(point, delta):
 	var direction = global_position.direction_to(point)
-	velocity = velocity.move_toward(direction * max_speed, acceleration * delta)
+	velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
 
 func fire():
 	var bullet_instantiate = bullet.instantiate()
