@@ -1,5 +1,5 @@
 extends RigidBody2D
 
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	queue_free()
