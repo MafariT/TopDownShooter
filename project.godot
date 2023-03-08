@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SoundPlayer="*res://Music and Sound/sound_player.tscn"
+Logger="*res://addons/gs_logger/logger.gd"
 
 [display]
 
@@ -28,6 +29,10 @@ window/size/viewport_height=720
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godotsize/plugin.cfg", "res://addons/gs_logger/plugin.cfg", "res://addons/monitor_overlay/plugin.cfg")
 
 [input]
 
