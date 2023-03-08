@@ -15,6 +15,7 @@ contact_monitor = true
 script = ExtResource("1_u4loa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
 texture = ExtResource("1_muece")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
