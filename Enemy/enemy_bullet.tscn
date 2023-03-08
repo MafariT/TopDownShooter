@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt1lyhsnbovcx"]
+
+[ext_resource type="Texture2D" uid="uid://cmgbnne65utxl" path="res://Enemy/EnemyBullet.png" id="1_muece"]
+[ext_resource type="Script" path="res://Enemy/enemy_bullet.gd" id="1_u4loa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rawit"]
+size = Vector2(12, 4)
+
+[node name="EnemyBullet" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 9
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_u4loa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_muece")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rawit")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

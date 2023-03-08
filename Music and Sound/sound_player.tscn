@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://btswbwwh82eok"]
+
+[ext_resource type="Script" path="res://Music and Sound/sound_player.gd" id="1_6xkib"]
+
+[node name="SoundPlayer" type="Node"]
+script = ExtResource("1_6xkib")
+
+[node name="AudioPlayer" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioPlayer"]
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="AudioPlayer"]
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="AudioPlayer"]
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="AudioPlayer"]
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="AudioPlayer"]
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="AudioPlayer"]
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="AudioPlayer"]
+
+[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="AudioPlayer"]
+
+[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="AudioPlayer"]

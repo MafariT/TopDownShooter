@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://cxxe2ew1rj237"]
+
+[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_hlwco"]
+[ext_resource type="Texture2D" uid="uid://cv3g0rpilwr15" path="res://Enemy/Enemy.png" id="1_i60ft"]
+[ext_resource type="PackedScene" uid="uid://cn748smaxsupw" path="res://Enemy/player_detection_zone.tscn" id="3_suvh6"]
+[ext_resource type="PackedScene" uid="uid://ledq3gtpkfh8" path="res://Hitbox/hitbox.tscn" id="4_kcdxd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymipf"]
+size = Vector2(16, 16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4d1fy"]
+polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkwrf"]
+size = Vector2(18, 18)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i6ix2"]
+radius = 263.017
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 9
+script = ExtResource("1_hlwco")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("1_i60ft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ymipf")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_4d1fy")
+
+[node name="Hitbox" parent="." instance=ExtResource("4_kcdxd")]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_hkwrf")
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource("3_suvh6")]
+collision_layer = 4
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+shape = SubResource("CircleShape2D_i6ix2")
+
+[node name="Delay" type="Timer" parent="."]
+wait_time = 0.7
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Delay" to="." method="_on_delay_timeout"]
+
+[editable path="Hitbox"]
+[editable path="PlayerDetectionZone"]
