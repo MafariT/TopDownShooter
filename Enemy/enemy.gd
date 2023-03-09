@@ -20,13 +20,7 @@ var state = WANDER
 
 func _physics_process(delta):
 	move(delta)
-	var player = player_detection_zone.player
-	if wall_check.is_colliding() and player != null:
-		player_detection_zone.monitoring = false
-		var player_direction = global_position.direction_to(player.global_position)
-		rotation = player_direction.angle()
-	else:
-		player_detection_zone.monitoring = true
+	monitor_player()
 	match state:
 		WANDER:
 			seek_player()
@@ -55,6 +49,15 @@ func chase_player(delta):
 		accelerate_toward_point(player.global_position, delta)
 		if can_fire:
 			fire()
+
+func monitor_player():
+	var player = player_detection_zone.player
+	if wall_check.is_colliding() and player != null:
+		player_detection_zone.monitoring = false
+		var player_direction = global_position.direction_to(player.global_position)
+		rotation = player_direction.angle()
+	else:
+		player_detection_zone.monitoring = true
 
 func accelerate_toward_point(point, delta):
 	var direction = global_position.direction_to(point)
