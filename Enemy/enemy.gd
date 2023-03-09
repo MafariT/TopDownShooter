@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var player_detection_zone = $PlayerDetectionZone
 @onready var delay = $Delay
 @onready var wander_delay = $WanderDelay
+@onready var wall_check = $WallCheck
 
 var bullet = preload("res://Enemy/enemy_bullet.tscn")
 var can_fire = true
@@ -19,7 +20,13 @@ var state = WANDER
 
 func _physics_process(delta):
 	move(delta)
-	
+	var player = player_detection_zone.player
+	if wall_check.is_colliding() and player != null:
+		player_detection_zone.monitoring = false
+		var player_direction = global_position.direction_to(player.global_position)
+		rotation = player_direction.angle()
+	else:
+		player_detection_zone.monitoring = true
 	match state:
 		WANDER:
 			seek_player()
@@ -37,12 +44,12 @@ func move(delta):
 	move_and_slide()
 		
 func seek_player():
-	if player_detection_zone.can_see_player():
+	if not wall_check.is_colliding() and player_detection_zone.can_see_player():
 		state = CHASE
 
 func chase_player(delta):
 	var player = player_detection_zone.player
-	if player != null:
+	if not wall_check.is_colliding() and player != null:
 		var player_direction = global_position.direction_to(player.global_position)
 		rotation = player_direction.angle()
 		accelerate_toward_point(player.global_position, delta)

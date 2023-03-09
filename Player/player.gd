@@ -15,7 +15,6 @@ func _physics_process(delta):
 	look_at(get_global_mouse_position())
 	fire()
 
-
 func move(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
