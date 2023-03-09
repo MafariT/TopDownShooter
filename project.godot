@@ -32,7 +32,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godotsize/plugin.cfg", "res://addons/gs_logger/plugin.cfg", "res://addons/monitor_overlay/plugin.cfg")
+enabled=PackedStringArray("res://addons/godotsize/plugin.cfg", "res://addons/gs_logger/plugin.cfg")
 
 [input]
 
