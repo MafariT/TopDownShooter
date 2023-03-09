@@ -8,7 +8,7 @@ extends CharacterBody2D
 @onready var fire_delay = $FireDelay
 
 var bullet = preload("res://Player/bullet.tscn")
-var can_fire = true
+var is_can_fire = true
 
 func _physics_process(delta):
 	move(delta)
@@ -27,9 +27,9 @@ func move(delta):
 	move_and_slide()
 	
 func fire():
-	if Input.is_action_pressed("LMB") and can_fire:
+	if Input.is_action_pressed("LMB") and is_can_fire:
 		fire_delay.start()
-		can_fire = false
+		is_can_fire = false
 		SoundPlayer.play_sound(SoundPlayer.PLAYER_GUN)
 		var bullet_instantiate = bullet.instantiate()
 		bullet_instantiate.global_position = get_global_position()
@@ -46,5 +46,5 @@ func _on_hit_box_body_entered(body):
 		death()
 
 func _on_fire_delay_timeout():
-	can_fire = true
+	is_can_fire = true
 

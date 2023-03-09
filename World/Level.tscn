@@ -70,4 +70,13 @@ position = Vector2(892, 427)
 [node name="Enemy4" parent="Entities/Enemies" instance=ExtResource("4_m7sgw")]
 position = Vector2(1166, 44)
 
+[node name="Enemy5" parent="Entities/Enemies" instance=ExtResource("4_m7sgw")]
+position = Vector2(1645, -77)
+
+[node name="Enemy6" parent="Entities/Enemies" instance=ExtResource("4_m7sgw")]
+position = Vector2(1597, 363)
+
+[node name="Enemy7" parent="Entities/Enemies" instance=ExtResource("4_m7sgw")]
+position = Vector2(1206, -129)
+
 [editable path="Camera2D"]
