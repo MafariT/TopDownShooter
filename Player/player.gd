@@ -10,6 +10,7 @@ extends CharacterBody2D
 var bullet = preload("res://Player/bullet.tscn")
 var is_can_fire = true
 
+
 func _physics_process(delta):
 	move(delta)
 	look_at(get_global_mouse_position())
